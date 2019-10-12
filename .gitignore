@@ -6,3 +6,6 @@ db.sqlite3
 
 # Let's not send our keys to the repo either
 api.keys
+
+# IDE Settings
+.prettierrc
