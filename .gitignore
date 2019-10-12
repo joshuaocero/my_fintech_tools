@@ -1,0 +1,8 @@
+# Let's not store date on the repo
+db.sqlite3
+
+# Let's also get rid of python bytecode
+*.pyc
+
+# Let's not send our keys to the repo either
+api.keys
