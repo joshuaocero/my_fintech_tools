@@ -1,5 +1,5 @@
 import os
-from my_momo_app.models import MomoRequest
+import json
 from mtnmomo.collection import Collection
 from celery.decorators import task
 from celery.utils.log import get_task_logger
@@ -16,7 +16,7 @@ def collect_funds(request):
         "COLLECTION_PRIMARY_KEY": os.environ.get("COLLECTION_PRIMARY_KEY")
     })
 
-    trans_ref = client.requestToPay(
+    response = client.requestToPay(
         mobile=request.mobile_no,
         amount=request.amount,
         external_id=request.external_id,
@@ -24,6 +24,9 @@ def collect_funds(request):
         payer_message=request.payee_message,
         currency=request.currency)
 
-    if trans_ref['transaction_ref']:
-        momo_request = MomoRequest.objects.get(id=request.id)
-        momo_request.transaction_ref = trans_ref['transaction_ref']
+    from my_momo_app.models import MomoRequest
+    momo_request = MomoRequest.objects.filter(id=request.id)
+    if 'transaction_ref' in response:
+        momo_request.update(request_status="complete",
+                            transaction_ref=response['transaction_ref'])
+    momo_request.update(lastest_api_response=response)

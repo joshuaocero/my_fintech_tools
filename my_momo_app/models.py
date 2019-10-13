@@ -15,6 +15,7 @@ class MomoRequest(models.Model):
     transaction_ref = models.TextField()
     request_status = models.CharField(
         max_length=10)  # Change this to enum field
+    lastest_api_response = models.TextField()
 
     client = Collection({
         "COLLECTION_USER_ID": os.environ.get("COLLECTION_USER_ID"),
