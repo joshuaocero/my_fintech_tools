@@ -6,14 +6,14 @@ This is a Django shell application that helps to collect funds from a user and m
 
 - The mtnmomo library to make HTTP calls to the MoMo API
 - The mtnmomo command line tool to help with generation of keys. This tool abstracts a lot of the pain involved in getting keys straight from the MoMo API.
-  Both these utilities are available on PyLib and are open on github at [link]
+  Both these utilities are available on [PyLib](https://pypi.org/project/mtnmomo/) and are open on [github](https://github.com/sparkplug/momoapi-python)
 
 ## Setting up the code
 
 - Clone the source code on github
 - Install the project dependencies using pip - `pip install -r requirements.txt`
 - Install `redis` on your host system. This is not a python package and will have to be installed separately.
-- I would advice you create a virtual environment for this project so you do not interfere with your local python setup. For more on virtual environments, check out this link.
+- I would advice you create a virtual environment for this project so you do not interfere with your local python setup. For more on virtual environments, check [this](https://virtualenv.pypa.io/en/latest/) out.
 
 ## Setting up to use the MOMO API
 
