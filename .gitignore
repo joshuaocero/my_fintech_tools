@@ -9,3 +9,7 @@ api.keys
 
 # IDE Settings
 .prettierrc
+
+# Celery runtime files
+celerybeat-schedule.db
+celerybeat.pid
