@@ -9,5 +9,5 @@ from pprint import pprint
 
 @receiver(post_save, sender=MomoRequest)
 def flag_task(sender, instance, **kwargs):
-    collect_funds.delay(instance)
-    # instance.my_momo_app.save()
+    collect_funds.delay(instance.id, instance.mobile_no, instance.amount,
+                        instance.external_id, instance.payee_note, instance.payee_message, instance.currency)
