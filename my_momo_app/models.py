@@ -1,6 +1,5 @@
 import os
 from django.db import models
-from mtnmomo.collection import Collection
 
 
 class MomoRequest(models.Model):

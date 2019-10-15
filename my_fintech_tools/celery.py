@@ -33,6 +33,7 @@ def collect_funds(r_id, mobile_no, amount, external_id, payee_note, payee_messag
         payer_message=payee_message,
         currency=currency)
 
+    # We'll do the import here as celery is loaded before Django apps
     from my_momo_app.models import MomoRequest
     momo_request = MomoRequest.objects.filter(id=r_id)
     if 'transaction_ref' in response:
@@ -56,6 +57,7 @@ def check_transaction_status():
         "COLLECTION_PRIMARY_KEY": os.environ.get("COLLECTION_PRIMARY_KEY")
     })
 
+    # We'll do the import here as celery is loaded before Django apps
     from my_momo_app.models import MomoRequest
     momo_requests = MomoRequest.objects.filter(request_status='PENDING')
 
