@@ -29,7 +29,8 @@ This is a Django shell application that helps to collect funds from a user and m
 
 ## How to use it
 
-- Open another terminal (with the virtual env activated, if you are using one) and enter `python manage.py shell`. This will open a Python interactive shell.
+- Open another terminal (with the virtual env activated, if you are using one) and run the migrations to set up the required SQLite tables `python manage.py migrate`.
+- Now enter `python manage.py shell`. This will open a Python interactive shell.
 - On the shell, import the model using this import statement `from my_momo_app.models import MomoRequest`
 - You can then create your new request e.g `mr = MomoRequest(mobile_no="256772123456", amount="1000", external_id="123456789", payee_note="OK", payee_message="Purchase of python library", currency="EUR")`. Please note that the MTN Sandbox which we'd be using in this case currently only accepts Euros(EUR) as currency.
 - Finally, save your request - `mr.save()`
